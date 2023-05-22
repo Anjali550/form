@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgba(253, 186, 187, 0.954);
+}
+.container{
+    display:flex;
+    /* justify-content:space-around; */
+    gap:50px;
+    margin:30px;
+    
+}
+.right{
+    background-color: antiquewhite;
+    padding:30px;
+}
+.left{
+    background-color: antiquewhite;
+    padding:30px;
+}
+.option{
+    /* float:right; */
+   /* margin:20px; */
+   padding:0;
+}
+i{
+    padding:10px;
+    cursor: pointer;
+}
+#detail div{
+    display:flex;
+    justify-content:space-between;               
+}
+#detail{
+    width:400px
+}
+.error{
+    color: red;
+    font-size: 10px;
+}

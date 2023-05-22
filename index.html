@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form  id="form">
+    <link rel="stylesheet" href="style.css" class="css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="right">
+        <form>
+          <h1>Fill your detail:-</h1>
+        <br />
+        <input type="text" placeholder="Your name" id="fname" /><br />
         
+        <p id="usererror" class="error"></p><br />
         
-        <input type = "text" id = "fname" name="Firstname" placeholder="First name" required><br><br>
-        <input type = "text" id = "lname" name="Lastname" placeholder="Last name" required ><br><br>
-        <input type="button" value="submit" id="btn" onclick="Submit()">
-        <input type="reset" value="Reset">
-    
-    </form><br><br>
-    <table border="2px" id="table">
-<tr>
-    <td class=".col" >first name</td><br>
-    <td class=".col" required>last name</td>
-    <td class=".col" >Action</td>
-</tr>
-    </table>
-</body>
-<script src="script.js"></script>
+        <button id="submit" >Save</button>
+        </form>
+      </div>
+      <div class="left">
+        <h1>your detail is here:-</h1>
+        <div id="detail">
+          <!-- <div>
+            <p>first name:-</p>
+            <p class="option">
+                <i class="fas fa-edit"></i>
+                <i class="fas fa-trash-alt"></i>
+              </p>
+            
+          </div> -->
+          
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
 </html>

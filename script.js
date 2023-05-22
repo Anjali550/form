@@ -1,76 +1,57 @@
-let row = null;
 
+let text = document.getElementById("fname");
 
-function Submit() {
-  let dataEntered = retrieveData();
-  let readData = readDatafromlocal(dataEntered);
-if( row == null){
-  insert(readData);
-}
-else{
-  update();
-}  
+let mybtn = document.getElementById("submit");
+let error = document.getElementById("usererror");
+let detail = document.getElementById("detail");
+mybtn.addEventListener("click",(e)=>{
+  e.preventDefault();
+  // let text = document.getElementById("fname").value ;
+  // console.log(text);
+  validation();
+});
 
-
-}
-
-// Retrieving data from form
-function retrieveData() {
-  let firstName = document.getElementById("fname").value;
-  let lastName = document.getElementById("lname").value;
-  let arr = [firstName, lastName];
-  return arr;
+let validation = ()=> {
+  if(document.getElementById("fname").value == ""){
+      // console.log("failure");
+       error.innerHTML= "*user name is empty";
+    }
+    else{
+      // console.log("clean")
+    error.innerHTML = "";
+    storeData();
+    }
   
 }
 
-// Data in localStorage
-function readDatafromlocal(dataEntered) {
-  //    storing data in local storage
-  let f = localStorage.setItem("firstName", dataEntered[0]);
-  let l = localStorage.setItem("lastName", dataEntered[1]);
-
-  // getting values from local and table
-let f1 = localStorage.getItem("firstName", f);
-let l1 = localStorage.getItem("lastName", l);
-let arr = [f1,l1];
-return arr
-
-}
-// insert data
-function insert(readData){
-    let row = table.insertRow();
-    row.insertCell(0).innerHTML = readData[0];
-    row.insertCell(1).innerHTML = readData[1];
-    row.insertCell(2).innerHTML = `<button onclick = edit(this)>Edit</button>
-                                   <button onclick = remove(this)>Delete</button>`;
-
+let post = {};
+let storeData = () =>{
+  post.text= text.value;
+console.log(post);
+details();
 }
 
-// Delete
-function remove(td){
+let details = () =>{
+  detail.innerHTML += 
+  ` <div>
+  <p>${post.text}</p>
+  <p class="option">
+      <i onclick = "editText(this)"class="fas fa-edit"></i>
+      <i onclick = "deleteText(this)" class="fas fa-trash-alt"></i>
+    </p>
   
-  let ans = confirm("are you sure u want to delete?");
-  if(ans == true){
-    row = td.parentElement.parentElement;
-    document.getElementById("table").deleteRow(row.rowIndex);  
-  }
- 
-  // deleteRow(0);
-  // document.getElementById("table").remove()
-  // delete whole table with remove function
+</div>
+  `;
+  text.value="";
 }
 
-// Edit
-// td = value inside the row
-function edit(td){
-  let row = td.parentElement.parentElement;
-  document.getElementById("fname").value = row.cells[0].innerHTML;
-  document.getElementById("lname").value = row.cells[1].innerHTML;
+let deleteText = (e) => {
+e.parentElement.parentElement.remove();
+};
+
+let editText = (e) =>{
+  text.value =e.parentElement.previousElementSibling.innerHTML;
+  e.parentElement.parentElement.remove();
 }
 
-// update
-function update(){
-  row.cells[0].innerHTML = document.getElementById("fname").value;
-  row.cells[1].innerHTML =document.getElementById("lname").value;
-   row = null;
-}
+
